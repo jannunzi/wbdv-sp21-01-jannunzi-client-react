@@ -3,11 +3,12 @@ import {Link} from "react-router-dom";
 
 const CourseEditor = ({history}) =>
   <h1>
-      <Link to="/courses">
+      <Link to="/courses/table">
         <i className="fas fa-arrow-left"></i>
       </Link>
-      <span onClick={() => history.goBack()}>Go Back</span>
       Course Editor
+      <i className="fas fa-times float-right"
+         onClick={() => history.goBack()}></i>
   </h1>
 
 // const CourseEditor = () => {
