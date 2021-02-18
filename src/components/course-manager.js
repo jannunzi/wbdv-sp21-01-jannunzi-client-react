@@ -69,7 +69,7 @@ export default class CourseManager
         </button>
 
         {/*<Route path="/courses/table" component={CourseTable}/>*/}
-        <Route path={["/", "/courses/table"]} exact={true} >
+        <Route path="/courses/table" exact={true} >
           <CourseTable
               updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}

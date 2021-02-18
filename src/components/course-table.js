@@ -12,10 +12,10 @@ export default class CourseTable extends
   render() {
     return(
       <div>
-        <h2>Course Table</h2>
           <Link to="/courses/grid">
-          <i className="fas fa-table float-right"></i>
+              <i className="fas fa-th float-right fa-2x"></i>
           </Link>
+        <h2>Course Table</h2>
         <table className="table">
             <thead></thead>
             <tbody>
