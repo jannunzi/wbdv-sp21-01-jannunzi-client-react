@@ -7,6 +7,8 @@ import App from './App';
 import Hello, {function2} from './hello'
 import HelloClass from "./hello-class";
 import reportWebVitals from './reportWebVitals';
+import CounterReact from "./components/counter/react-state/counter-react";
+import CounterRedux from "./components/counter/redux-state/counter-redux";
 
 ReactDOM.render(
   <App/>,
