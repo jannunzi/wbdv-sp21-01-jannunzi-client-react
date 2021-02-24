@@ -1,11 +1,18 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import moduleReducer from "../reducers/module-reducer";
-import {createStore} from "redux";
+import lessonReducer from "../reducers/lesson-reducer";
+import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleList from "./module-list";
+import LessonTabs from "./lesson-tabs";
 
-const store = createStore(moduleReducer)
+const reducer = combineReducers({
+    moduleReducer: moduleReducer,
+    lessonReducer: lessonReducer
+})
+
+const store = createStore(reducer)
 
 const CourseEditor = ({history}) =>
     <Provider store={store}>
@@ -17,7 +24,14 @@ const CourseEditor = ({history}) =>
           <i className="fas fa-times float-right"
              onClick={() => history.goBack()}></i>
       </h1>
-        <ModuleList/>
+        <div className="row">
+            <div className="col-3">
+                <ModuleList/>
+            </div>
+            <div className="col-9">
+                <LessonTabs/>
+            </div>
+        </div>
     </Provider>
 // const CourseEditor = () => {
 //   return (
