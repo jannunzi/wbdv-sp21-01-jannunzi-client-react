@@ -11,7 +11,13 @@ function App() {
           <Route path="/" exact={true}  component={Home}/>
           <Route path="/courses" component={CourseManager}/>
           {/*<Route path="/editor" component={CourseEditor}/>*/}
-          <Route path="/editor" exact={true} render={(props) => <CourseEditor {...props}/>}/>
+          <Route path={[
+              "/courses/:layout/edit/:courseId",
+              "/courses/:layout/edit/:courseId/modules/:moduleId",
+              "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId"
+          ]}
+                 exact={true}
+                 render={(props) => <CourseEditor {...props}/>}/>
         {/*<div className="container-fluid">*/}
         {/*  <CourseManager/>*/}
         {/*  <CourseEditor/>*/}

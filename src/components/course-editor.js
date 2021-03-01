@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link, useParams, useHistory} from "react-router-dom";
 import moduleReducer from "../reducers/module-reducer";
 import lessonReducer from "../reducers/lesson-reducer";
 import {combineReducers, createStore} from "redux";
@@ -14,8 +14,10 @@ const reducer = combineReducers({
 
 const store = createStore(reducer)
 
-const CourseEditor = ({history}) =>
-    <Provider store={store}>
+const CourseEditor = ({history, params}) => {
+    const {layout, courseId, moduleId} = useParams();
+    return(
+        <Provider store={store}>
       <h1>
           <Link to="/courses/table">
             <i className="fas fa-arrow-left"></i>
@@ -32,7 +34,8 @@ const CourseEditor = ({history}) =>
                 <LessonTabs/>
             </div>
         </div>
-    </Provider>
+    </Provider>)
+    }
 // const CourseEditor = () => {
 //   return (
 //     <h1>Course Editor</h1>
