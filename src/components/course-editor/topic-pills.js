@@ -8,12 +8,12 @@ const TopicPills = () => {
         {courseId}{moduleId}{lessonId}
         <ul className="nav nav-pills">
             <li className="nav-item">
-                <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC123`}>
+                <Link className={`nav-link ${topicId === 'ABC123' ? 'active' : ''}`} to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC123`}>
                     ABC123
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC234`}>
+                <Link className={`nav-link ${topicId === 'ABC234' ? 'active' : ''}`} to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC234`}>
                     ABC234
                 </Link>
             </li>
