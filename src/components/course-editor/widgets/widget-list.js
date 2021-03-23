@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
 import {useParams} from "react-router-dom"
+import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
 const WidgetList = () => {
     const {topicId} = useParams()
@@ -57,6 +59,7 @@ const WidgetList = () => {
                 {
                     widgets.map(_widget =>
                         <li key={_widget.id} className="list-group-item">
+                            {_widget.id}
                             {
                                 _widget.id === widget.id &&
                                     <>
@@ -80,6 +83,20 @@ const WidgetList = () => {
                             {
                                 _widget.type === "PARAGRAPH" &&
                                 <ParagraphWidget
+                                    setWidget={setWidget}
+                                    editing={_widget.id === widget.id}
+                                    widget={_widget}/>
+                            }
+                            {
+                                _widget.type === "LIST" &&
+                                <ListWidget
+                                    setWidget={setWidget}
+                                    editing={_widget.id === widget.id}
+                                    widget={_widget}/>
+                            }
+                            {
+                                _widget.type === "IMAGE" &&
+                                <ImageWidget
                                     setWidget={setWidget}
                                     editing={_widget.id === widget.id}
                                     widget={_widget}/>
