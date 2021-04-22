@@ -3,9 +3,12 @@ import {useHistory} from 'react-router-dom'
 
 const Register = () => {
     const [user, setUser] = useState({})
+    const history = useHistory()
     const register = () => {
-        fetch("http://localhost:4000/api/register", {
+        // TODO: move this to a service file
+        fetch("http://localhost:8080/api/register", {
             method: "POST",
+            credentials: "include",
             body: JSON.stringify(user),
             headers: {
                 'content-type': "application/json"
@@ -15,7 +18,7 @@ const Register = () => {
                 console.log(error)
             })
             .then((actualUser) => {
-                useHistory.push("/profile")
+                history.push("/profile")
             })
     }
     return(
@@ -31,10 +34,13 @@ const Register = () => {
                 onChange={(e) => setUser({...user, password: e.target.value})}
                 placeholder="password" className="form-control"/>
             <input placeholder="password2" className="form-control"/>
-            <select>
-                <option>ADMIN</option>
-                <option>FACULTY</option>
-                <option>STUDENT</option>
+            <select onChange={(e) => {
+                const role = e.target.value
+                setUser({...user, role: role})
+            }}>
+                <option value="ADMIN">ADMIN</option>
+                <option value="FACULTY">FACULTY</option>
+                <option value="STUDENT">STUDENT</option>
             </select>
             <button onClick={register}>
                 Register

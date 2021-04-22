@@ -6,6 +6,8 @@ import Home from "./components/home"
 import Login from "./components/users/login";
 import Register from "./components/users/register";
 import Profile from "./components/users/profile";
+import QuizzesList from "./components/quizzes/quizzes-list";
+import Quiz from "./components/quizzes/quiz";
 
 function App() {
   return (
@@ -21,7 +23,14 @@ function App() {
               <Route path="/login" exact={true}  component={Login}/>
               <Route path="/register" exact={true}  component={Register}/>
               <Route path="/profile" exact={true}  component={Profile}/>
+              <Route path="/profile/:userId" exact={true}  component={Profile}/>
           <Route path="/courses" component={CourseManager}/>
+              <Route path="/courses/:courseId/quizzes" exact={true}>
+                  <QuizzesList/>
+              </Route>
+              <Route path="/courses/:courseId/quizzes/:quizId" exact={true}>
+                  <Quiz/>
+              </Route>
           {/*<Route path="/editor" component={CourseEditor}/>*/}
           <Route path={[
               "/courses/:layout/edit/:courseId",
